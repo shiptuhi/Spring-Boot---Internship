@@ -53,8 +53,7 @@ public class Controllers {
 	}
 	
 	@PutMapping(path = "/update/{id}") 
-	public ResponseEntity<Employee> updateEmployee(@PathVariable long id,@RequestBody Employee uEmployee) {
-		
+	public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id,@RequestBody Employee uEmployee) {
 		Employee employee = repositories.upEmployee(id, uEmployee);
 		return new ResponseEntity<>(employee, HttpStatus.CREATED);
 	}

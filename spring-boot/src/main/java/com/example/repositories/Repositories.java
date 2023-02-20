@@ -7,7 +7,7 @@ import com.example.repositories.EmployeeRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import java.sql.* ;
+import java.sql.*;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class Repositories {
-	
-	Connection conn = null ;
+
+	Connection conn = null;
 
 	@Autowired
 	EntityManager entityManager;
@@ -39,8 +39,8 @@ public class Repositories {
 		return query.getResultList();
 	}
 
-	public Employee insert(Employee newemployee){
-		
+	public Employee insert(Employee newemployee) {
+
 		Employee emp = new Employee();
 		emp.setId(newemployee.getId());
 		emp.setFirstName(newemployee.getFirstName());
@@ -58,8 +58,19 @@ public class Repositories {
 	}
 
 	public Employee upEmployee(long id, Employee employee) {
-		Employee emp = employeeRepository.findById(id).get();
+		Employee emp = new Employee();
+		emp.setId(id);
 		emp.setFirstName(employee.getFirstName());
+		emp.setLastName(employee.getLastName());
+		emp.setEmail(employee.getEmail());
+		emp.setPhoneNo(employee.getPhoneNo());
+		emp.setDate(employee.getDate());
+		emp.setJobId(employee.getJobId());
+		emp.setSalary(employee.getSalary());
+		emp.setComPCT(employee.getComPCT());
+		emp.setManID(employee.getManID());
+		emp.setDepartment(employee.getDepartment());
+
 		return employeeRepository.save(emp);
 	}
 
